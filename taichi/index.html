@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>太极阴阳图</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: #ccc;
+    }
+
+    /* 太极图的主圆，一半黑一半白（保证 高度=边框+宽度） */
+    #taichi {
+      position: relative;
+      width: 100px;
+      height: 200px;
+      margin: 100px auto;
+      border-radius: 50%;
+      border: 1px solid black;
+      border-left-width: 100px;
+      background-color: white;
+      animation: circle 5s linear infinite;
+    }
+
+    /* 两个小圆放到黑白分界线上，模拟出 S 型曲线 */
+    #taichi::before,
+    #taichi::after {
+      content: '';
+      position: absolute;
+      transform: translateX(-50%);
+      width: 0;
+      height: 0;
+      padding: 15px;
+      border-radius: 50%;
+    }
+
+    /* 绘制白底黑框圆 */
+    #taichi::before {
+      background-color: white;
+      border: 35px solid black;
+    }
+
+    /* 绘制黑底白框圆 */
+    #taichi::after {
+      bottom: 0;
+      background-color: black;
+      border: 35px solid white;
+    }
+
+    @keyframes circle {
+      0% {
+        transform: rotate(0deg);
+      }
+
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div id="taichi"></div>
+</body>
+
+</html>
